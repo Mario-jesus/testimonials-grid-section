@@ -1,0 +1,18 @@
+{
+  "name": "testimonials-grid-section",
+  "version": "1.0.0",
+  "description": "![Design preview for the Testimonials grid section coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./src/sass:./src/css",
+    "sass:build": "sass ./src/sass:./src/css",
+    "build": "npm run sass:build"
+  },
+  "keywords": [],
+  "author": "Mario Jesús Arias Hernández",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.78.0"
+  }
+}
