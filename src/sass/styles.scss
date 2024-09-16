@@ -65,6 +65,7 @@ $text-xl: 1.25rem;
   padding: 2rem;
   padding-top: 1.625rem;
   border-radius: 0.5rem;
+  box-shadow: 40px 60px 50px -47px hsl(217, 19%, 35%, 0.2424);
   position: relative;
   z-index: 1;
 
@@ -143,6 +144,7 @@ body {
   @extend %container;
   max-width: 1110px;
   margin-block: 71px;
+  overflow: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, 327px);
   justify-content: center;
@@ -192,16 +194,12 @@ body {
     --text-bold-color: #{$white};
   }
 
-  &--3 {}
-
   &--4 {
     --bg-color: #{$very-dark-blackish-blue};
     --text-color: #{$white};
     --text-bold-color: #{$light-grayish-blue};
     --profile-border-color: #{$moderate-violet};
   }
-
-  &--5 {}
 
   @media screen and (min-width: 1280px) {
     $text-sm: 0.75rem;
