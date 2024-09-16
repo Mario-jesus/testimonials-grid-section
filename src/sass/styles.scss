@@ -65,7 +65,7 @@ $text-xl: 1.25rem;
   padding: 2rem;
   padding-top: 1.625rem;
   border-radius: 0.5rem;
-  box-shadow: 40px 60px 50px -47px hsl(217, 19%, 35%, 0.2424);
+  box-shadow: 40px 60px 50px -47px hsl(217, 19%, 35%, 0.2474);
   position: relative;
   z-index: 1;
 
@@ -144,7 +144,7 @@ body {
   @extend %container;
   max-width: 1110px;
   margin-block: 71px;
-  overflow: auto;
+  overflow: initial;
   display: grid;
   grid-template-columns: repeat(auto-fit, 327px);
   justify-content: center;
