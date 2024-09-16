@@ -62,8 +62,8 @@ $text-xl: 1.25rem;
   $title-margin-bottom: map.get($margins-bottom, 'title');
 
   background-color: $bg-color;
-  padding: 2rem;
-  padding-top: 1.625rem;
+  padding-inline: 2rem;
+  padding-block: 1.625rem;
   border-radius: 0.5rem;
   box-shadow: 40px 60px 50px -47px hsl(217, 19%, 35%, 0.2474);
   position: relative;
@@ -128,7 +128,7 @@ $text-xl: 1.25rem;
   &__paragraph {
     @include barlow-semi-condensed-medium;
     font-size: $text-sm;
-    line-height: 1.03rem;
+    line-height: 1.125rem;
     color: $text-color;
     opacity: 70%;
   }
