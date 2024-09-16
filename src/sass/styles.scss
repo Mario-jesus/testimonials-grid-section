@@ -141,6 +141,7 @@ body {
 
 .testimonials-grid-section {
   @extend %container;
+  max-width: 1110px;
   margin-block: 71px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 327px);
