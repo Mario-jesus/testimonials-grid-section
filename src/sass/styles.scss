@@ -1,8 +1,245 @@
+@use 'sass:map';
+
+// Colors
+// Primary
+$moderate-violet: hsl(263, 55%, 52%);
+$very-dark-grayish-blue: hsl(217, 19%, 35%);
+$very-dark-blackish-blue: hsl(217, 30%, 14%);
+$white: hsl(0, 0%, 100%);
+// Neutral
+$light-gray: hsl(0, 0%, 81%);
+$light-grayish-blue: hsl(210, 46%, 95%);
+
+// Font sizes
+// 11px 13px 20px
+$text-xs: 0.6875rem;
+$text-sm: 0.8125rem;
+$text-xl: 1.25rem;
+
+%container {
+  width: 90%;
+  max-width: 1280px;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+@mixin barlow-semi-condensed-medium {
+  font-family: "Barlow Semi Condensed", system-ui, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin barlow-semi-condensed-semibold {
+  font-family: "Barlow Semi Condensed", system-ui, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/// Mixin para crear tarjeta testimonial-card.
+/// @param {String} $bg-color - El color de fondo del elemento.
+/// @param {Map} $text-styles - Mapa de los estilos del texto.
+/// @param {Color} $text-styles.text-color - Color del texto
+/// @param {Color} $text-styles.text-bold-color - Color del texto en negrita
+/// @param {Map} $margins-bottom - Mapa de los márgenes inferiores.
+/// @param {Number} $margins-bottom.profile - márgen inferior del perfil.
+/// @param {Number} $margins-bottom.title - márgen inferior del título.
+/// @param {Color|Null} $profile-border-color - Color del borde del perfil.
+@mixin testimonial-card(
+    $bg-color: $white,
+    $text-styles: (
+      'text-color': $very-dark-grayish-blue,
+      'text-bold-color': $very-dark-grayish-blue,
+    ),
+    $margins-bottom: (
+      'profile': 1.125rem,
+      'title': 1rem,
+    ),
+    $profile-border-color: transparent,
+  ) {
+  $text-color: map.get($text-styles, 'text-color');
+  $text-bold-color: map.get($text-styles, 'text-bold-color');
+  $profile-margin-bottom: map.get($margins-bottom, 'profile');
+  $title-margin-bottom: map.get($margins-bottom, 'title');
+
+  background-color: $bg-color;
+  padding: 2rem;
+  padding-top: 1.625rem;
+  border-radius: 0.5rem;
+  position: relative;
+  z-index: 1;
+
+  &__image-absolute {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 24px;
+
+    @media screen and (min-width: 1280px) {
+      right: 80px;
+    }
+  }
+
+  &__profile {
+    margin-bottom: $profile-margin-bottom;
+    display: flex;
+    align-items: center;
+    gap: 1.0625rem;
+
+    &-picture {
+      width: 1.75rem;
+      height: 1.75rem;
+      outline: 0.125rem solid $profile-border-color;
+      border-radius: 50%;
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+    }
+
+    &-name {
+      @include barlow-semi-condensed-semibold;
+      font-size: $text-sm;
+      line-height: $text-sm;
+      color: $text-bold-color;
+      margin-bottom: 0.25rem;
+    }
+
+    &-graduate {
+      @include barlow-semi-condensed-medium;
+      font-size: $text-xs;
+      line-height: $text-xs;
+      color: $text-color;
+      opacity: 50%;
+    }
+  }
+
+  &__title {
+    @include barlow-semi-condensed-semibold;
+    font-size: $text-xl;
+    line-height: normal;
+    color: $text-bold-color;
+    margin-bottom: $title-margin-bottom;
+  }
+
+  &__paragraph {
+    @include barlow-semi-condensed-medium;
+    font-size: $text-sm;
+    line-height: 1.125rem;
+    color: $text-color;
+    opacity: 70%;
+  }
+}
+
+body {
+  @include barlow-semi-condensed-medium;
+  font-size: 0.8125rem;
+  background-color: $light-grayish-blue;
+}
+
+.testimonials-grid-section {
+  @extend %container;
+  margin-block: 71px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 327px);
+  justify-content: center;
+  row-gap: 1.5rem;
+  column-gap: 1.875rem;
+
+  @media screen and (min-width: 1280px) {
+    grid-template-rows: minmax(282px, auto) minmax(266px, auto);
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 169px;
+    margin-bottom: 159px;
+  }
+}
+
+.testimonials-card {
+  --bg-color: #{$white};
+  --text-color: #{$very-dark-grayish-blue};
+  --text-bold-color: #{$very-dark-grayish-blue};
+  --profile-margin-bottom: 1.125rem;
+  --title-margin-bottom: 1rem;
+  --profile-border-color: transparent;
+
+  @include testimonial-card(
+    $bg-color: var(--bg-color),
+    $text-styles: (
+      'text-color': var(--text-color),
+      'text-bold-color': var(--text-bold-color),
+    ),
+    $margins-bottom: (
+      'profile': var(--profile-margin-bottom),
+      'title': var(--title-margin-bottom),
+    ),
+    $profile-border-color: var(--profile-border-color),
+  );
+
+  &--1 {
+    --bg-color: #{$moderate-violet};
+    --text-color: #{$light-gray};
+    --text-bold-color: #{$white};
+    --title-margin-bottom: 2.5rem;
+    --profile-border-color: #A775F1;
+  }
+
+  &--2 {
+    --bg-color: #{$very-dark-grayish-blue};
+    --text-color: #{$white};
+    --text-bold-color: #{$white};
+  }
+
+  &--3 {}
+
+  &--4 {
+    --bg-color: #{$very-dark-blackish-blue};
+    --text-color: #{$white};
+    --text-bold-color: #{$light-grayish-blue};
+  }
+
+  &--5 {}
+
+  @media screen and (min-width: 1280px) {
+    $text-sm: 0.75rem;
+
+    &--1 {
+      --title-margin-bottom: 1rem;
+
+      grid-row: 1/2;
+      grid-column: 1/3;
+    }
+
+    &--2 {
+      grid-row: 1/2;
+      grid-column: 3/4;
+    }
+
+    &--3 {
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+
+    &--4 {
+      grid-row: 2/3;
+      grid-column: 2/4;
+    }
+
+    &--5 {
+      grid-row: 1/-1;
+      grid-column: -2/-1;
+    }
+  }
+}
+
 .attribution {
-  font-size: 11px;
+  @extend %container;
+  font-size: $text-xs;
   margin-bottom: 1rem;
   text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
+
+  &__link {
+    color: hsl(228, 45%, 44%);
+  }
 }
