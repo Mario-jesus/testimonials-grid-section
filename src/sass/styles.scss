@@ -128,7 +128,7 @@ $text-xl: 1.25rem;
   &__paragraph {
     @include barlow-semi-condensed-medium;
     font-size: $text-sm;
-    line-height: 1.125rem;
+    line-height: 1.03rem;
     color: $text-color;
     opacity: 70%;
   }
